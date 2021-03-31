@@ -1,0 +1,20 @@
+---
+- name: to download and install packages from Git repo
+  hosts: localhost
+  vars_prompt:
+    - name: git_user
+      prompt: "Enter your github username"
+      private: no
+    - name: git_password
+      prompt: "Enter your github password"
+      private: yes
+  vars:
+    repo_name: extend_c
+  tasks:
+  - git:
+      repo: 'https://github.com/kmk1010/extend_c.git'
+      dest: /usr/bin/playbook/clone
+      clone: yes
+      update: yes
+      force: yes
+
